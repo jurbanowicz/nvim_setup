@@ -24,9 +24,9 @@ local cmp_action = require('lsp-zero').cmp_action()
 cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		-- `Enter` key to confirm completion
-		['<C-i>'] = cmp.mapping.confirm({select = false}),
-
 		['<CR>'] = cmp.mapping.confirm({select = false}),
+		-- 'Tab' key to confirm completion
+        ['<C-i>'] = cmp.mapping.confirm({select = false}),
 		-- Ctrl+Space to trigger completion menu
 		['<C-Space>'] = cmp.mapping.complete(),
 
@@ -34,5 +34,13 @@ cmp.setup({
 		-- Scroll up and down in the completion documentation
 		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-d>'] = cmp.mapping.scroll_docs(4),
-	})
+	}),
+
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" }, -- LSP
+        { name = "luasnip" }, -- snippets
+        { name = "buffer" }, -- text within the current buffer
+        { name = "path" }, -- file system paths
+    })
 })
+
