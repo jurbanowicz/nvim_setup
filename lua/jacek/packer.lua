@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
 			{'hrsh7th/nvim-cmp'},
 			{'hrsh7th/cmp-path'},
 			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-cmdline'},
 			{'L3MON4D3/LuaSnip'},
 		}
 	}
@@ -46,10 +47,12 @@ return require('packer').startup(function(use)
     use('mfussenegger/nvim-dap-python')
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
     use('theHamsta/nvim-dap-virtual-text')
-
     use {
             'mfussenegger/nvim-jdtls',
             disable = false,
         }
-
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
 end)
