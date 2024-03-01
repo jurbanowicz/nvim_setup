@@ -22,7 +22,7 @@
 
 local lsp_zero = require('lsp-zero')
 
-lsp_zero.on_attach(function(client, bufnr)
+local on_attach = function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -35,7 +35,9 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
 -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
+end
+
+lsp_zero.on_attach(on_attach)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -94,5 +96,24 @@ cmp.setup.cmdline(':', {
         }
     })
 })
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lsp_config = require('lspconfig')
 
+lsp_config["dartls"].setup({
+    on_attach = on_attach,
+    settings = {
+        dart = {
+            analysisExcludedFolders = {
+                vim.fn.expand("$HOME/tools/flutter"),
+                vim.fn.expand("$HOME/.pub-cache/"),
+            },
+        }
+    }
+})
+
+lsp_zero.setup()
+
+
+
+-- require("dart-tools")
 

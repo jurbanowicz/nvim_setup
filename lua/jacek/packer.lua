@@ -56,5 +56,10 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-}
+    }
+
+    use('dart-lang/dart-vim-plugin')
+    use('nvim-telescope/telescope-ui-select.nvim')
+
 end)
+
