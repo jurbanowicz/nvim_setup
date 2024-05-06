@@ -47,7 +47,7 @@ return require('packer').startup(function(use)
     -- debugging
     use('mfussenegger/nvim-dap')
     use('mfussenegger/nvim-dap-python')
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
     use('theHamsta/nvim-dap-virtual-text')
     use {
             'mfussenegger/nvim-jdtls',
@@ -61,5 +61,14 @@ return require('packer').startup(function(use)
     use('dart-lang/dart-vim-plugin')
     use('nvim-telescope/telescope-ui-select.nvim')
 
+    use {
+        'akinsho/flutter-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+    }
+
+    use 'mfussenegger/nvim-lint'
+    use 'stevearc/conform.nvim'
 end)
 
