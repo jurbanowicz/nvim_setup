@@ -61,5 +61,12 @@ return require('packer').startup(function(use)
     use('dart-lang/dart-vim-plugin')
     use('nvim-telescope/telescope-ui-select.nvim')
 
+    use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+        'nvim-lua/plenary.nvim',
+    },
+}
+
 end)
 

@@ -41,7 +41,7 @@ lsp_zero.on_attach(on_attach)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'pyright', 'lua_ls'},
+  ensure_installed = {'pyright', 'lua_ls', 'tsserver'},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
@@ -66,7 +66,7 @@ cmp.setup({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
     ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
   }),
     preselect = 'item',
@@ -96,20 +96,20 @@ cmp.setup.cmdline(':', {
         }
     })
 })
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lsp_config = require('lspconfig')
-
-lsp_config["dartls"].setup({
-    on_attach = on_attach,
-    settings = {
-        dart = {
-            analysisExcludedFolders = {
-                vim.fn.expand("$HOME/tools/flutter"),
-                vim.fn.expand("$HOME/.pub-cache/"),
-            },
-        }
-    }
-})
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- local lsp_config = require('lspconfig')
+-- 
+-- lsp_config["dartls"].setup({
+--     on_attach = on_attach,
+--     settings = {
+--         dart = {
+--             analysisExcludedFolders = {
+--                 vim.fn.expand("$HOME/tools/flutter"),
+--                 vim.fn.expand("$HOME/.pub-cache/"),
+--             },
+--         }
+--     }
+-- })
 
 lsp_zero.setup()
 
